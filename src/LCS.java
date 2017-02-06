@@ -12,8 +12,8 @@ public class LCS {
 	}
 	
 	public int[][] findLCS(){
-		int n = A.length();
-		int m = B.length();
+		int n = A.length() + 1;
+		int m = B.length() + 1;
 		// length matrix
 		int[][] subseq = new int[n][m];
 		// direction matrix
@@ -31,7 +31,7 @@ public class LCS {
 				int above = subseq[i-1][j];
 				int left = subseq[i][j-1];
 				int diagonal = -Integer.MAX_VALUE;
-				if (A.charAt(i) == (B.charAt(j))){
+				if (A.charAt(i-1) == (B.charAt(j-1))){
 					diagonal = subseq[i-1][j-1] + 1;
 				}
 				subseq[i][j] = Math.max(Math.max(above, left), diagonal);
@@ -68,8 +68,7 @@ public class LCS {
 		}
 		
 		if (dirs[i][j] == 3) {
-			printLCS(dirs, i-1, j-1, Character.toString(A.charAt(i)) + lcs);
-			// System.out.print(A.charAt(i));
+			printLCS(dirs, i-1, j-1, Character.toString(A.charAt(i-1)) + lcs);
 		} else {
 			if (dirs[i][j] == 1){
 				printLCS(dirs, i-1, j, lcs);

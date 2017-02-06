@@ -28,5 +28,14 @@ public class LCSTest {
 			System.out.println("");
 		}
 	}
+	
+	@Test
+	public void testSmaller(){
+		URL path = LCS.class.getResource("ToyExample.txt");
+		File seq = new File(path.getFile());
+		LCS lcs = new LCS(seq);
+		
+		lcs.findLCS();
+	}
 
 }

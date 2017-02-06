@@ -45,15 +45,14 @@ public class LCS {
 			}
 		}
 		
-		int[][] matrix = dirs;
-		for (int i = 0; i < matrix.length; i++){
-			for (int j = 0; j < matrix[i].length; j++){
-				System.out.print(matrix[i][j] + "  ");
-			}
-			System.out.println("");
-		}
+//		int[][] matrix = dirs;
+//		for (int i = 0; i < matrix.length; i++){
+//			for (int j = 0; j < matrix[i].length; j++){
+//				System.out.print(matrix[i][j] + "  ");
+//			}
+//			System.out.println("");
+//		}
 		
-		// TODO: maybe return result of printing?
 		System.out.println();
 		printLCS(dirs, n-1, m-1, "");
 		System.out.println();
@@ -62,8 +61,8 @@ public class LCS {
 	
 	public void printLCS(int[][] dirs, int i, int j, String lcs){
 		if (i == 0 || j == 0){
-			System.out.println("length: " + lcs.length());
 			System.out.println("LCS: " + lcs);
+			System.out.println("length: " + lcs.length());
 			return;
 		}
 		
@@ -110,6 +109,14 @@ public class LCS {
 
 	public String getB() {
 		return B;
+	}
+
+	public void setA(String a) {
+		A = a;
+	}
+
+	public void setB(String b) {
+		B = b;
 	}
 
 }

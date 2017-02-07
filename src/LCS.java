@@ -56,8 +56,10 @@ public class LCS {
 		System.out.println();
 		printLCS(dirs, n-1, m-1, "");
 		System.out.println();
+		printAlignment(dirs, n-1, m-1, "", "");
 		return subseq;
 	}
+	
 	
 	public void printLCS(int[][] dirs, int i, int j, String lcs){
 		if (i == 0 || j == 0){
@@ -73,6 +75,31 @@ public class LCS {
 				printLCS(dirs, i-1, j, lcs);
 			} else {
 				printLCS(dirs, i, j-1, lcs);
+			}
+		}
+	}
+	
+	
+	/**
+	 * TODO: this
+	 */
+	public void printAlignment(int[][] dirs, int i, int j, String newA, String newB){
+		if (i == 0 || j == 0){
+			System.out.println("A: " + newA);
+			System.out.println("B: " + newB);
+			return;
+		}
+		
+		if (dirs[i][j] == 3) {
+			// match
+			printAlignment(dirs, i-1, j-1, Character.toString(A.charAt(i-1)) + newA, Character.toString(B.charAt(j-1)) + newB);
+		} else {
+			if (dirs[i][j] == 1){
+				// "up": gap in B
+				printAlignment(dirs, i-1, j, Character.toString(A.charAt(i-1)) + newA, "-" + newB);
+			} else {
+				// "left": gap in A
+				printAlignment(dirs, i, j-1, "-" + newA, Character.toString(B.charAt(j-1)) + newB);
 			}
 		}
 	}
